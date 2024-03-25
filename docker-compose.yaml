@@ -1,0 +1,35 @@
+# springboot + mysql
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: tutuo
+    volumes:
+      - /var/lib/mysql
+  app:
+    image: tutuo
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/tutuo?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 123456
+      SPRING_MVC_HIDDENMETHOD_FILTER_ENABLED: true
+      SPRING_SERVLET_MULTIPART_MAX-FILE-SIZE: 10MB
+      SPRING_SERVLET_MULTIPART_MAX-REQUEST-SIZE: 100MB
+      MYBATIS_CONFIGURATION_LOG-IMPL: org.apache.ibatis.logging.stdout.StdOutImpl
+      MYBATIS_CONFIGURATION_MAP-UNDERSCORE-TO-CAMEL-CASE: true
+      MYBATIS_MAPPER-LOCATIONS: classpath:mapper/*.xml
+      ALIYUN_OSS_ENDPOINT: https://oss-cn-hangzhou.aliyuncs.com
+      ALIYUN_OSS_ACCESSKEYID: LTAI5tEijDcL6YSVDCNjapPD
+      ALIYUN_OSS_ACCESSKEYSECRET: uCDcfe5M3eKHaU7vYSholOUTQE0KdS
+      ALIYUN_OSS_BUCKETNAME: 1kunkun1
+      OPENAI_APIKEY: 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
+      OPENAI_CHATENDPOINT: https://api.openai.com/v1/chat/completions
