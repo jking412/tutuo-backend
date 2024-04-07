@@ -18,7 +18,7 @@ services:
     depends_on:
       - db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/tutuo?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://127.0.0.1:3306/tutuo?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: 123456
       SPRING_MVC_HIDDENMETHOD_FILTER_ENABLED: true
