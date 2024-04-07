@@ -3,7 +3,7 @@ name: Docker
 on:
   push:
     branches:
-      - master
+      - release
 
 env:
   IMAGE_NAME: springboot-web
